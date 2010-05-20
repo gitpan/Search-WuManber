@@ -1,0 +1,9 @@
+Changes
+Makefile.PL
+README
+t/Search-WuManber.t
+demo.pl
+WuManber.pm
+WuManber.xs
+MANIFEST
+META.yml                                 Module meta-data (added by MakeMaker)
