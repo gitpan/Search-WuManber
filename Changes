@@ -1,5 +1,8 @@
 Revision history for Perl extension Search::WuManber.
 
+0.23 Thu May 20 18:05:58 CEST 2010
+	- MANIFEST misses *.h *.c files.
+
 0.22 Fri Jan 29 16:07:57 CEST 2010
 	- rebased the C-part of the module on agrep-2.04
 

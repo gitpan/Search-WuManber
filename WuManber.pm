@@ -20,7 +20,7 @@ require DynaLoader;
 our @ISA = qw(Exporter DynaLoader);
 our @EXPORT = qw();		# autoexport
 our @EXPORT_OK = qw();		# exportable
-our $VERSION = '0.22';
+our $VERSION = '0.23';
 
 bootstrap Search::WuManber $VERSION;
 
