@@ -1,5 +1,9 @@
 Revision history for Perl extension Search::WuManber.
 
+0.24 Fri Nov 19 18:53:24 CET 2010
+	- pacified perlcritic
+	- converted demo.pl into t/01-demo.t, so that we have at least one selftest.
+
 0.23 Thu May 20 18:05:58 CEST 2010
 	- MANIFEST misses *.h *.c files.
 

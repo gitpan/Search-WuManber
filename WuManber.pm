@@ -17,10 +17,9 @@ use warnings;
 require Exporter;
 require DynaLoader;
 
-our @ISA = qw(Exporter DynaLoader);
-our @EXPORT = qw();		# autoexport
-our @EXPORT_OK = qw();		# exportable
-our $VERSION = '0.23';
+use base qw(Exporter DynaLoader);
+our @EXPORT_OK = qw();          # exportable
+our $VERSION = '0.24';
 
 bootstrap Search::WuManber $VERSION;
 
@@ -56,10 +55,11 @@ sub first
 {
   my ($self, $text) = @_;
   delete $self->{result};
-  $self->next($text);
+  return $self->next($text);
 }
 
-sub next
+# This is a method, not a bare subroutine.
+sub next             ## no critic (ProhibitBuiltinHomonyms)
 {
   my ($self,$text) = @_;
   $self->{result} = $self->all($text) unless $self->{result};
@@ -67,7 +67,7 @@ sub next
 #  my $o = shift @{$self->{result}};
 #  my $i = shift @{$self->{result}};
 #  return [$o, $i];
-  shift @{$self->{result}};
+  return shift @{$self->{result}};
 }
 
 sub all
@@ -76,7 +76,10 @@ sub all
   my $m = find_all($self, $text);
   if ($m && $self->{return_string})
     {
-      map { push @$_, $self->{patterns}[$_->[1]] } @$m;
+      for my $p (@$m)
+        { 
+	  push @$p, $self->{patterns}[$p->[1]];
+	}
     }
   return $m;
 }
@@ -124,7 +127,7 @@ The iterator is inefficient. C<first()> just calls C<all()> ...,
 
 This implementation uses internal hash-functions, which may not be optimal. 
 
-Efficiency of the WuManber depends on the minimum length of search strings.
+Efficiency of WuManber depends on the minimum length of search strings.
 Suggested minimum length is 5. C<new()> switches to a slower algorithm if one of 
 the strings has less than 3 characters.
 
