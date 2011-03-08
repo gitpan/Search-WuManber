@@ -1,7 +1,7 @@
 #
 # WuManber.pm
 #
-# Copyright (c) 2007-2010, Juergen Weigert, Novell Inc.
+# Copyright (c) 2007-2011, Juergen Weigert, openSUSE.org
 # This module is free software. It may be used, redistributed
 # and/or modified under the same terms as Perl (version 5.8.8) itself.
 #
@@ -19,7 +19,7 @@ require DynaLoader;
 
 use base qw(Exporter DynaLoader);
 our @EXPORT_OK = qw();          # exportable
-our $VERSION = '0.24';
+our $VERSION = '0.25';
 
 bootstrap Search::WuManber $VERSION;
 
@@ -104,19 +104,20 @@ Search::WuManber -- A fast algorithm for multi-pattern searching
 
 This module implements the Wu-Manber multi-pattern parallel search algorithm.
 
-The search strings passed to C<new()> are prepared for parallel lookup.
+The list of search patterns passed to C<new()> are prepared for parallel lookup.
 A perl reference pointing to all internal data is returned. Treat this reference
 as opaque. C<first()> and C<next()> iterate over all text positions where matches occur.
+Pattern matches in this context are substring matches.
 Each match is returned as a reference to a two-element array representing text
-offset and list index of a search string. Options for C<new()>:
- * C<<return_string => 1>> make the return value of the iterator a 
+offset and list index of the matching pattern. Options for C<new()>:
+ * C<< return_string => 1 >> make the return value of the iterator a 
 three-element array, containing also the search string itself.
- * C<<case_sensitive => 0>> run the search case insensitive (slightly slower).
+ * C<< case_sensitive => 0 >> run the search in case insensitive mode (slightly slower).
 
-The matches are returned roughly sorted. Offset usually increments, but may
+The matches are returned roughly sorted by offset. Offset usually increments, but may
 jump backwards by the length difference of neighbouring search strings. 
 
-C<New()> allocates a constant amount of memory (between 130k and 2MB).
+C<New()> allocates a constant amount of memory (between ca. 130k and 2MB).
 This memory can be returned by C<undef $search;>
 
 
@@ -158,7 +159,7 @@ Juergen Weigert <jw@cs.fau.de>
 
 =head1 COPYRIGHT AND LEGALESE
 
-Copyright (c) 2007, Juergen Weigert, Novell Inc.
+Copyright (c) 2007-2011, Juergen Weigert, openSUSE.org
 This module is free software. It may be used, redistributed
 and/or modified under the same terms as Perl itself.
 

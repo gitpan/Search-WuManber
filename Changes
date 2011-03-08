@@ -1,5 +1,8 @@
 Revision history for Perl extension Search::WuManber.
 
+0.25 Wed Mar  9 00:42:45 CET 2011
+	- added t/*.t to MANIFEST, fixed pod syntax
+	
 0.24 Fri Nov 19 18:53:24 CET 2010
 	- pacified perlcritic
 	- converted demo.pl into t/01-demo.t, so that we have at least one selftest.

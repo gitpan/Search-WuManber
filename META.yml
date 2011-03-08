@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Search-WuManber
-version:            0.24
+version:            0.25
 abstract:           ~
 author:
     - Juergen Weigert <jw@suse.de>
